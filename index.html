@@ -3,13 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yong Sing Ya – Portfolio</title>
+    <title>Yong Sing Ya | IT Portfolio</title>
 
     <style>
+      :root {
+        --ink: #17212b;
+        --muted: #607080;
+        --line: #dbe3ea;
+        --paper: #ffffff;
+        --soft: #f4f7fa;
+        --blue: #2364aa;
+        --teal: #168f8f;
+        --coral: #d85c4a;
+        --shadow: 0 18px 45px rgba(23, 33, 43, 0.09);
+      }
+
       * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
       }
 
       html {
@@ -17,461 +29,823 @@
       }
 
       body {
-        font-family: Georgia, 'Times New Roman', serif;
-        color: #333;
-        background: #f5f5f5;
         min-height: 100vh;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      /* NAVBAR */
+      a {
+        color: inherit;
+      }
+
       nav {
-        position: fixed;
+        position: sticky;
         top: 0;
-        width: 100%;
-        background: #ffffff;
-        border-bottom: 2px solid #333;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        z-index: 10;
+        border-bottom: 1px solid rgba(219, 227, 234, 0.9);
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(16px);
       }
 
       nav ul {
-        margin: 0;
-        padding: 12px 0;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 16px 0;
         display: flex;
+        align-items: center;
         justify-content: center;
-        gap: 40px;
+        gap: 26px;
         list-style: none;
         flex-wrap: wrap;
       }
 
       nav a {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
         text-decoration: none;
-        color: #333;
-        font-weight: normal;
-        font-size: 14px;
-        position: relative;
-      }
-
-      nav a:hover {
-        color: #666;
-        text-decoration: underline;
-      }
-
-      nav a::after {
-        content: '';
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 0;
-        height: 0;
-        background: none;
-      }
-
-      nav a:hover::after {
-        width: 0;
-      }
-
-      /* HERO SECTION */
-      .hero {
-        padding-top: 120px;
-        padding-bottom: 60px;
-        text-align: center;
-        background: #ffffff;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: none;
-        pointer-events: none;
-      }
-
-      .hero img {
-        width: 160px;
-        height: 160px;
-        border-radius: 4px;
-        object-fit: cover;
-        border: 3px solid #333;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero h1 {
-        margin-top: 25px;
-        font-size: 42px;
-        color: #000;
-        opacity: 1;
-        position: relative;
-        z-index: 1;
-        font-weight: normal;
-        letter-spacing: 1px;
-      }
-
-      .hero p {
-        margin-top: 10px;
-        font-size: 18px;
-        color: #666;
-        opacity: 1;
-        position: relative;
-        z-index: 1;
-        font-weight: normal;
-      }
-
-      .button-group {
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        position: relative;
-        z-index: 1;
-      }
-
-      .btn {
-        padding: 10px 24px;
-        border: 1px solid #333;
-        border-radius: 0;
-        font-weight: normal;
-        text-decoration: none;
-        cursor: pointer;
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        opacity: 1;
-        background: #ffffff;
-        color: #000;
-        transition: all 0.2s ease;
-      }
-
-      .btn-primary {
-        background: #333;
-        color: white;
-        border: 1px solid #333;
-        box-shadow: none;
-      }
-
-      .btn-primary:hover {
-        background: #555;
-        border: 1px solid #555;
-        transform: none;
-        box-shadow: none;
-      }
-
-      .btn-secondary {
-        background: white;
-        color: #333;
-        border: 1px solid #333;
-        box-shadow: none;
-      }
-
-      .btn-secondary:hover {
-        background: #f0f0f0;
-        color: #000;
-        transform: none;
-        box-shadow: none;
-      }
-
-      .btn-linkedin {
-        opacity: 1;
-      }
-
-      .contact-info {
-        margin-top: 20px;
-        opacity: 1;
-        position: relative;
-        z-index: 1;
-      }
-
-      .contact-info p {
-        margin: 8px 0;
-        font-size: 14px;
-        color: #666;
-      }
-
-      .contact-info a {
-        color: #333;
-        text-decoration: underline;
-        font-weight: normal;
         transition: color 0.2s ease;
       }
 
-      .contact-info a:hover {
-        color: #666;
+      nav a:hover {
+        color: var(--blue);
+      }
+
+      .hero {
+        width: min(1120px, calc(100% - 32px));
+        min-height: 92vh;
+        margin: 0 auto;
+        padding: 76px 0 48px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+        align-items: center;
+        gap: 48px;
+      }
+
+      .eyebrow {
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin-top: 14px;
+        max-width: 760px;
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 650px;
+        margin-top: 24px;
+        color: var(--muted);
+        font-size: 19px;
+        line-height: 1.75;
+      }
+
+      .button-group {
+        margin-top: 30px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        min-height: 46px;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        color: var(--ink);
+        background: var(--paper);
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: rgba(35, 100, 170, 0.38);
+        box-shadow: 0 12px 26px rgba(23, 33, 43, 0.1);
+      }
+
+      .btn-primary {
+        color: #ffffff;
+        background: var(--blue);
+        border-color: var(--blue);
+      }
+
+      .profile-panel {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .profile-panel img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+      }
+
+      .contact-info {
+        margin-top: 18px;
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .contact-info a {
+        color: var(--ink);
+        font-weight: 700;
         text-decoration: none;
       }
 
-      /* SECTIONS */
       section {
-        max-width: 900px;
-        margin: 50px auto;
-        padding: 40px;
-        background: #ffffff;
-        border-radius: 0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        animation: none;
-        opacity: 1;
-        backdrop-filter: none;
-        border: 1px solid #ddd;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto 28px;
+        padding: 48px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: 0 10px 30px rgba(23, 33, 43, 0.05);
       }
 
-      section:hover {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 28px;
       }
 
       h2 {
-        margin-top: 0;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #333;
-        padding-bottom: 10px;
-        color: #000;
-        font-size: 24px;
-        font-weight: normal;
-        letter-spacing: 1px;
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.1;
       }
 
-      .skills-grid {
+      .section-heading p,
+      section > p {
+        max-width: 680px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .project-shot {
+        min-height: 190px;
+        padding: 18px;
+        display: grid;
+        align-content: end;
         gap: 12px;
-        margin-top: 15px;
+        color: #ffffff;
+        background: linear-gradient(135deg, #2364aa, #168f8f);
       }
 
-      .skills-grid div {
-        padding: 12px 15px;
-        background: #f9f9f9;
-        border-radius: 0;
-        border-left: 3px solid #333;
-        transition: all 0.2s ease;
+      .project-card:nth-child(2) .project-shot {
+        background: linear-gradient(135deg, #17212b, #d85c4a);
       }
 
-      .skills-grid div:hover {
-        background: #f0f0f0;
-        transform: none;
+      .project-card:nth-child(3) .project-shot {
+        background: linear-gradient(135deg, #168f8f, #5b6f95);
       }
 
-      .job {
-        margin-bottom: 25px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #ddd;
+      .ocbc-shot {
+        position: relative;
+        min-height: 210px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(63, 83, 121, 0.12) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(63, 83, 121, 0.12) 1px, transparent 1px),
+          linear-gradient(150deg, #111a2d 0%, #16243a 48%, #0a2030 100%);
+        background-size: 28px 28px, 28px 28px, 100% 100%;
       }
 
-      .job:last-child {
-        border-bottom: none;
+      .ocbc-shot::before,
+      .ocbc-shot::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid rgba(66, 177, 232, 0.55);
       }
 
-      .job-title {
-        font-weight: bold;
-        color: #333;
+      .ocbc-shot::before {
+        width: 82px;
+        height: 82px;
+        left: 28px;
+        top: 58px;
+        box-shadow: inset 0 0 0 12px rgba(66, 177, 232, 0.08), 0 0 0 9px rgba(66, 177, 232, 0.12);
+      }
+
+      .ocbc-shot::after {
+        width: 54px;
+        height: 54px;
+        left: 50%;
+        top: 70px;
+        transform: translateX(-50%) rotate(30deg);
+        border-radius: 8px;
+      }
+
+      .signal-line {
+        position: absolute;
+        left: 112px;
+        right: 112px;
+        top: 99px;
+        border-top: 2px dotted rgba(113, 203, 244, 0.58);
+      }
+
+      .signal-line::before,
+      .signal-line::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        top: -4px;
+        border-radius: 50%;
+        background: #4bc3ff;
+      }
+
+      .signal-line::before {
+        left: 0;
+      }
+
+      .signal-line::after {
+        right: 0;
+      }
+
+      .decision {
+        position: absolute;
+        right: 36px;
+        width: 58px;
+        height: 38px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        font-weight: 900;
+      }
+
+      .decision.approved {
+        top: 42px;
+        color: #39d980;
+        border: 2px solid rgba(57, 217, 128, 0.9);
+      }
+
+      .decision.approved::before {
+        content: "";
+        width: 16px;
+        height: 9px;
+        border-left: 3px solid currentColor;
+        border-bottom: 3px solid currentColor;
+        transform: rotate(-45deg);
+      }
+
+      .decision.denied {
+        top: 122px;
+        color: #f15d5d;
+        border: 2px solid rgba(241, 93, 93, 0.95);
+      }
+
+      .decision.denied::before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: currentColor;
+        box-shadow: 0 22px 0 -7px currentColor;
+      }
+
+      .browser-bar {
+        width: 88px;
+        height: 10px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 28px 0 0 rgba(255, 255, 255, 0.42), 56px 0 0 rgba(255, 255, 255, 0.32);
+      }
+
+      .shot-lines {
+        display: grid;
+        gap: 8px;
+      }
+
+      .shot-lines span {
+        height: 12px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .shot-lines span:nth-child(2) {
+        width: 72%;
+      }
+
+      .shot-lines span:nth-child(3) {
+        width: 48%;
+      }
+
+      .project-body {
+        padding: 22px;
+      }
+
+      .project-body h3 {
+        font-size: 21px;
+        margin-bottom: 10px;
+      }
+
+      .project-body p {
+        color: var(--muted);
+        line-height: 1.65;
         font-size: 15px;
+      }
+
+      .tags {
+        margin-top: 16px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .tag {
+        padding: 6px 10px;
+        border-radius: 99px;
+        color: var(--ink);
+        background: #edf3f7;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .tag-dark {
+        color: #e9f1fb;
+        background: #281d34;
+        border: 1px solid rgba(216, 92, 74, 0.35);
+      }
+
+      .split-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .skill-panel,
+      .cert-card,
+      .timeline-item {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .skill-panel h3,
+      .cert-card h3 {
+        margin-bottom: 14px;
+        font-size: 19px;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skills-list span {
+        padding: 9px 11px;
+        border-radius: 8px;
+        background: #edf3f7;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .cert-card p,
+      .timeline-item p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline-item strong {
+        display: block;
         margin-bottom: 8px;
       }
 
-      .job p {
-        color: #666;
-        line-height: 1.6;
+      .footer {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 30px 0 48px;
+        color: var(--muted);
+        text-align: center;
       }
 
-      section p {
-        line-height: 1.7;
-        color: #666;
-      }
-
-      /* ANIMATIONS */
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 1;
-          transform: none;
-        }
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-
-      @keyframes float {
-        0%, 100% {
-          transform: none;
-        }
-        50% {
-          transform: none;
-        }
-      }
-
-      @media (max-width: 768px) {
-        nav ul {
-          gap: 20px;
-          padding: 8px 0;
-        }
-
-        nav a {
-          font-size: 12px;
+      @media (max-width: 900px) {
+        .hero,
+        .projects-grid,
+        .split-grid,
+        .cert-grid {
+          grid-template-columns: 1fr;
         }
 
         .hero {
-          padding-top: 90px;
-          padding-bottom: 40px;
+          min-height: auto;
+          padding-top: 46px;
         }
 
-        .hero h1 {
-          font-size: 32px;
-        }
-
-        .hero p {
-          font-size: 16px;
-        }
-
-        .button-group {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .btn {
-          width: 180px;
-          justify-content: center;
+        .profile-panel {
+          max-width: 380px;
         }
 
         section {
-          margin: 35px auto;
-          padding: 25px 20px;
+          padding: 32px 22px;
         }
 
-        h2 {
-          font-size: 20px;
+        .section-heading {
+          display: block;
         }
 
-        .skills-grid {
-          grid-template-columns: 1fr;
+        .section-heading p {
+          margin-top: 12px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        h1 {
+          font-size: 32px;
+          line-height: 1.05;
+        }
+
+        .intro {
+          font-size: 16px;
+          line-height: 1.65;
+        }
+
+        .hero {
+          gap: 28px;
+          padding-top: 28px;
+          padding-bottom: 30px;
+        }
+
+        .profile-panel {
+          max-width: 240px;
+          padding: 12px;
+        }
+
+        .profile-panel img {
+          aspect-ratio: 4 / 3;
+        }
+
+        .contact-info {
+          gap: 6px;
+          font-size: 12px;
+        }
+
+        nav ul {
+          justify-content: flex-start;
+          gap: 16px;
+          overflow-x: auto;
+          flex-wrap: nowrap;
+        }
+
+        .button-group {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      @media print {
+        nav,
+        .button-group {
+          display: none;
+        }
+
+        body {
+          background: #ffffff;
+        }
+
+        .hero,
+        section {
+          width: 100%;
+          min-height: auto;
+          margin: 0 0 18px;
+          padding: 18px 0;
+          border: 0;
+          box-shadow: none;
         }
       }
     </style>
   </head>
 
-  <body>
-    <!-- NAVBAR -->
+  <body id="top">
     <nav>
       <ul>
-        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="#languages">Languages</a></li>
       </ul>
     </nav>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-      <img src="Me.jpeg" alt="Profile Photo" />
+    <header class="hero">
+      <div>
+        <p class="eyebrow">IT Student</p>
+        <h1>Yong Sing Ya builds practical, user-focused tech projects.</h1>
+        <p class="intro">
+          I am an Information Technology student at Republic Polytechnic, developing skills in
+          software development, networking, and system support. This portfolio highlights the
+          projects, technical learning, and workplace experience I can bring to an internship team.
+        </p>
 
-      <h1>Yong Sing Ya</h1>
-      <p>IT Student</p>
-
-      <div class="button-group">
-        <a class="btn btn-primary" href="https://www.linkedin.com/in/yong-sing-ya" target="_blank">
-          💼 LinkedIn Profile
-        </a>
+        <div class="button-group">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/yongsingya" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="#" onclick="window.print(); return false;">Download Portfolio</a>
+          <a class="btn" href="https://www.linkedin.com/in/yong-sing-ya" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
       </div>
 
-      <div class="contact-info">
-        <p>📧 Email: <a href="mailto:yongsingya@gmail.com">yongsingya@gmail.com</a></p>
-        <p>📞 Phone: <a href="tel:+6585392120">8539 2120</a></p>
-      </div>
-    </div>
+      <aside class="profile-panel" aria-label="Contact card">
+        <img src="Me.jpeg" alt="Yong Sing Ya profile photo" />
+        <div class="contact-info">
+          <p>Email: <a href="mailto:yongsingya@gmail.com">yongsingya@gmail.com</a></p>
+          <p>Phone: <a href="tel:+6585392120">+65 8539 2120</a></p>
+          <p>Languages: Chinese, English, Malay</p>
+        </div>
+      </aside>
+    </header>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        IT student from Republic polytechnic with a willingness to learn new things. Passionate about developing practical skills in software, networking, and system support, while continuously learning and improving in the field.
-      </p>
+    <section id="projects">
+      <div class="section-heading">
+        <h2>Featured Projects</h2>
+        <p>
+          Selected technical work presented with the problem solved, tools used, and what I learned
+          while building each project.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-shot ocbc-shot" aria-label="OCBC Virtual Teller Machine project preview">
+            <div class="signal-line"></div>
+            <div class="decision approved"></div>
+            <div class="decision denied"></div>
+          </div>
+          <div class="project-body">
+            <h3>OCBC Virtual Teller Machine</h3>
+            <p>
+              Built an end-to-end Virtual Teller Machine prototype for the OCBC Ignite Innovation
+              Challenge 2025, focused on remote teller support and digital banking interactions.
+            </p>
+            <p>
+              Challenge: designing a secure, real-time customer flow that connects video support,
+              identity checks, and clear teller decisions in one smooth experience.
+            </p>
+            <div class="tags">
+              <span class="tag tag-dark">React</span>
+              <span class="tag tag-dark">WebRTC</span>
+              <span class="tag tag-dark">Vite</span>
+              <span class="tag tag-dark">Tailwind CSS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-shot" aria-label="Screenshot preview for student portfolio website">
+            <div class="browser-bar"></div>
+            <div class="shot-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Personal Portfolio Website</h3>
+            <p>
+              Redesigned a resume-style page into a project-focused portfolio with responsive layout,
+              modern styling, clear calls to action, and recruiter-friendly sections.
+            </p>
+            <p>
+              Challenge: making the page feel professional while keeping it lightweight and easy to
+              maintain with only HTML and CSS.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Responsive Design</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-shot" aria-label="Screenshot preview for system support tracker">
+            <div class="browser-bar"></div>
+            <div class="shot-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>IT Support Tracker Concept</h3>
+            <p>
+              Planned a simple ticket tracking interface for recording user issues, priority,
+              troubleshooting notes, and resolution status.
+            </p>
+            <p>
+              Challenge: organizing support information so repeated issues can be identified faster
+              and handled more consistently.
+            </p>
+            <div class="tags">
+              <span class="tag">Systems Support</span>
+              <span class="tag">UI Planning</span>
+              <span class="tag">Problem Solving</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-shot" aria-label="Screenshot preview for network troubleshooting notes">
+            <div class="browser-bar"></div>
+            <div class="shot-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Networking Lab Notes</h3>
+            <p>
+              Built structured notes for networking practice, including device setup steps,
+              connectivity checks, common errors, and troubleshooting flow.
+            </p>
+            <p>
+              Challenge: turning technical practice into clear documentation that another student or
+              teammate could follow.
+            </p>
+            <div class="tags">
+              <span class="tag">Networking</span>
+              <span class="tag">Documentation</span>
+              <span class="tag">Troubleshooting</span>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- SKILLS -->
     <section id="skills">
-      <h2>Key Competencies</h2>
+      <div class="section-heading">
+        <h2>Skills</h2>
+        <p>Technical skills are separated from workplace strengths so recruiters can scan both quickly.</p>
+      </div>
 
-      <div class="skills-grid">
-        <div>Customer service excellence</div>
-        <div>Stock management & merchandising</div>
-        <div>Problem-solving & initiative</div>
-        <div>Cash handling & POS operations</div>
-        <div>Team collaboration & support</div>
-        <div>Attention to detail</div>
-        <div>Strong verbal communication</div>
-        <div>Time management & punctuality</div>
-        <div>Fast learner & adaptability</div>
+      <div class="split-grid">
+        <div class="skill-panel">
+          <h3>Technical Skills</h3>
+          <div class="skills-list">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>React</span>
+            <span>WebRTC</span>
+            <span>Vite</span>
+            <span>Tailwind CSS</span>
+            <span>Responsive Web Design</span>
+            <span>GitHub</span>
+            <span>Networking Basics</span>
+            <span>System Support</span>
+            <span>Troubleshooting</span>
+            <span>Documentation</span>
+          </div>
+        </div>
+
+        <div class="skill-panel">
+          <h3>Soft Skills</h3>
+          <div class="skills-list">
+            <span>Customer Service</span>
+            <span>Communication</span>
+            <span>Team Collaboration</span>
+            <span>Attention to Detail</span>
+            <span>Time Management</span>
+            <span>Adaptability</span>
+            <span>Initiative</span>
+            <span>Fast Learner</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <section id="certifications">
+      <div class="section-heading">
+        <h2>Certifications</h2>
+        <p>Certification areas to update with completed badge links or credential IDs as they are earned.</p>
+      </div>
+
+      <div class="cert-grid">
+        <article class="cert-card">
+          <h3>Networking Fundamentals</h3>
+          <p>In-progress focus area for networking concepts, connectivity, and troubleshooting.</p>
+        </article>
+        <article class="cert-card">
+          <h3>Web Development</h3>
+          <p>In-progress focus area for HTML, CSS, JavaScript, and responsive user interfaces.</p>
+        </article>
+        <article class="cert-card">
+          <h3>IT Support</h3>
+          <p>In-progress focus area for helpdesk practice, user support, and documentation.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="job">
-        <div class="job-title">
-          ALO — Service Associate (Mar 2026 – Ongoing)
-        </div>
+      <div class="section-heading">
+        <h2>Experience</h2>
         <p>
-          Assisted customers, answered inquiries, resolved issues, managed
-          transactions, and helped maintain a clean store environment.
+          Workplace experience that supports internship readiness through service, communication,
+          reliability, and problem solving.
         </p>
       </div>
 
-      <div class="job">
-        <div class="job-title">
-          Venus — Sales Assistant (Sep 2024 – Mar 2025)
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>ALO - Service Associate (Mar 2026 - Ongoing)</strong>
+          <p>Assist customers, answer inquiries, resolve issues, manage transactions, and maintain store standards.</p>
         </div>
-        <p>
-          Guided customers, restocked shelves, supported purchase decisions, and
-          maintained store standards.
-        </p>
-      </div>
-
-      <div class="job">
-        <div class="job-title">
-          Mount Elizabeth Novena — Patient Care Assistant (Jul 2023 – Apr 2024)
+        <div class="timeline-item">
+          <strong>Venus - Sales Assistant (Sep 2024 - Mar 2025)</strong>
+          <p>Guided customers, restocked shelves, supported purchase decisions, and maintained store presentation.</p>
         </div>
-        <p>
-          Assisted patients with daily living needs, recorded vital signs, and
-          supported healthcare teams.
-        </p>
-      </div>
-
-      <div class="job">
-        <div class="job-title">
-          Canton Paradise Essence — Server (Apr 2023 – Jun 2023)
+        <div class="timeline-item">
+          <strong>Mount Elizabeth Novena - Patient Care Assistant (Jul 2023 - Apr 2024)</strong>
+          <p>Assisted patients with daily living needs, recorded vital signs, and supported healthcare teams.</p>
         </div>
-        <p>
-          Served food and drinks, managed orders, and ensured a pleasant dining
-          experience.
-        </p>
+        <div class="timeline-item">
+          <strong>Canton Paradise Essence - Server (Apr 2023 - Jun 2023)</strong>
+          <p>Served food and drinks, managed orders, and helped provide a positive dining experience.</p>
+        </div>
       </div>
     </section>
 
-    <!-- EDUCATION -->
     <section id="education">
-      <h2>Education</h2>
-      <p>Diploma in Information Technology — Republic Polytechnic</p>
-      <p>SPM (Science Stream) — SMK Taman Nusa Jaya</p>
+      <div class="section-heading">
+        <h2>Education</h2>
+        <p>Current academic background and language ability.</p>
+      </div>
+
+      <div class="split-grid">
+        <div class="timeline-item">
+          <strong>Diploma in Information Technology</strong>
+          <p>Republic Polytechnic</p>
+        </div>
+        <div class="timeline-item">
+          <strong>SPM, Science Stream</strong>
+          <p>SMK Taman Nusa Jaya</p>
+        </div>
+      </div>
     </section>
 
-    <!-- LANGUAGES -->
-    <section id="languages">
-      <h2>Languages</h2>
-      <p>Chinese • English • Malay</p>
-    </section>
+    <footer class="footer">
+      <p>Built by Yong Sing Ya. Open to IT internship opportunities.</p>
+    </footer>
   </body>
 </html>
